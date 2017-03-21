@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -9,15 +10,18 @@ import static org.junit.Assert.assertTrue;
 public class CreditCardValidatorTest {
     @Test
     public void zeroIsValid() {
-        CreditCardValidator validator = new CreditCardValidator();
-        boolean isValid = validator.isLuhnValid("0");
-        assertTrue(isValid);
+        assertIsLuhnValid(true, "0");
     }
+
 
     @Test
     public void oneIsNotValid() {
+        assertIsLuhnValid(false, "1");
+    }
+
+    private void assertIsLuhnValid(Boolean expected, String creditCardNumber) {
         CreditCardValidator validator = new CreditCardValidator();
-        boolean isValid = validator.isLuhnValid("1");
-        assertFalse(isValid);
+        boolean isValid = validator.isLuhnValid(creditCardNumber);
+        assertEquals(expected, isValid);
     }
 }
