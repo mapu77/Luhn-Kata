@@ -3,6 +3,7 @@
  */
 public class CreditCardValidator {
     public boolean isLuhnValid(String creditCardNumber) {
-        return true;
+        int number = Integer.parseInt(creditCardNumber);
+        return number % 10 == 0;
     }
 }
