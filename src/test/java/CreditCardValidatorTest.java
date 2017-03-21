@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -11,5 +12,12 @@ public class CreditCardValidatorTest {
         CreditCardValidator validator = new CreditCardValidator();
         boolean isValid = validator.isLuhnValid("0");
         assertTrue(isValid);
+    }
+
+    @Test
+    public void oneIsNotValid() {
+        CreditCardValidator validator = new CreditCardValidator();
+        boolean isValid = validator.isLuhnValid("1");
+        assertFalse(isValid);
     }
 }
