@@ -24,6 +24,11 @@ public class CreditCardValidatorTest {
         assertIsLuhnValid(false, "10");
     }
 
+    @Test
+    public void oneEightIsValid() {
+        assertIsLuhnValid(true, "18");
+    }
+
     private void assertIsLuhnValid(Boolean expected, String creditCardNumber) {
         CreditCardValidator validator = new CreditCardValidator();
         boolean isValid = validator.isLuhnValid(creditCardNumber);
