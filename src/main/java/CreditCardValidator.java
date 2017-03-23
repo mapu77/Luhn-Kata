@@ -3,7 +3,7 @@
  */
 public class CreditCardValidator {
     public boolean isLuhnValid(String creditCardNumber) {
-        int number = Integer.parseInt(creditCardNumber);
+        int number = Integer.parseInt(new StringBuilder(creditCardNumber).reverse().toString());
         return isTenDivisible(number);
     }
 
