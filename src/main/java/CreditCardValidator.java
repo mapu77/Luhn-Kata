@@ -12,10 +12,9 @@ public class CreditCardValidator {
     private int processEvens(String number) {
         int sum = 0;
         for (int i = 1; i < number.length(); i += 2) {
-            Character digit = number.charAt(i);
-            int twoTimes = Integer.parseInt(digit.toString()) * 2;
-            if (twoTimes > 9) twoTimes -= 9;
-            sum += twoTimes;
+            int doubled = doubleCharNumber(number.charAt(i));
+            if (hasTwoDigits(doubled)) doubled -= 9;
+            sum += doubled;
         }
         return sum;
     }
@@ -23,10 +22,21 @@ public class CreditCardValidator {
     private int processOdds(String number) {
         int sum = 0;
         for (int i = 0; i < number.length(); i += 2) {
-            Character digit = number.charAt(i);
-            sum += Integer.parseInt(digit.toString());
+            sum += convertCharToInt(number.charAt(i));
         }
         return sum;
+    }
+
+    private int convertCharToInt(Character digit) {
+        return Integer.parseInt(digit.toString());
+    }
+
+    private int doubleCharNumber(Character digit) {
+        return convertCharToInt(digit) * 2;
+    }
+
+    private boolean hasTwoDigits(int number) {
+        return number > 9;
     }
 
     private String stringReverser(String string) {
